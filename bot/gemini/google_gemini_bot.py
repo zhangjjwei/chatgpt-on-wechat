@@ -56,7 +56,7 @@ class GoogleGeminiBot(Bot):
                 safety_settings=safety_settings
             )
             if response.candidates and response.candidates[0].content:
-                reply_text = response.candidates[0].content.parts[0].text
+                reply_text = response.candidates[0].content.parts[0].text.strip()
                 logger.info(f"[Gemini] reply={reply_text}")
                 self.sessions.session_reply(reply_text, session_id)
                 return Reply(ReplyType.TEXT, reply_text)
